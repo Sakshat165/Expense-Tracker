@@ -8,7 +8,7 @@ app.use( express.json());
 
 //routes
 app.use('/api/auth',require('./routes/auth'));
-
+app.use('/api/transaction/',require('./routes/transaction'))
 
 
 app.listen(port, () => {
