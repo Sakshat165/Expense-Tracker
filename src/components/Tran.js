@@ -34,7 +34,7 @@ const Tran = () => {
             navigate('/login');
         }
         // eslint-disable-next-line
-    }, [history, navigate]);
+    }, [history,navigate]);
     
     
        
@@ -42,11 +42,17 @@ const Tran = () => {
      <div className='container'>
         <div className="row my-3">
             <center><h2>History</h2></center>
+            <select className="form-select" name="type">
+            <option value="">Select Frequency</option>
+            <option value="7">1 Week</option>
+            <option value="31">1 Month</option>
+            <option value="365">1 year</option>
+        </select>
             {loading ? (
                 <center><i className="fa-solid fa-spinner"></i></center>
             ) : (
                 gettran.map((tran) => (
-                    <TranItem key={tran._id} gettran={tran} />
+                    <TranItem key={tran._id} gettran={tran}/>
                 ))
             )}
         </div>

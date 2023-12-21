@@ -5,12 +5,28 @@ const Add = () => {
     const[tran,setTran]=useState({type:"",amount:"",tag:""})
     let navigate=useNavigate();
 
+
+    const fetchuser=async ()=>{
+      const response = await fetch("http://localhost:5000/api/auth/getuser", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "auth-token":localStorage.getItem('token')
+              },
+        });
+        const json=await response.json();
+        localStorage.setItem('name',json.name)
+        
+        
+      }
+
+
     useEffect(()=>{
       if(!localStorage.getItem('token'))
       {
         navigate('/login')
       }
-  
+      fetchuser();
       // eslint-disable-next-line 
   },[navigate])
 
@@ -49,7 +65,11 @@ const Add = () => {
         setTran({...tran,[e.target.name]:e.target.value})
     }
   return (
-    <div className=' container mt-3'>
+    <div className=' container mt-3 '>
+      <div className="card ">
+        <div className="card-body">
+
+        
       <form >
         <div className="mb-3">
         <select className="form-select" name="type" value={tran.type} onChange={handlechange}>
@@ -71,7 +91,8 @@ const Add = () => {
   <button type="submit" className="btn btn-primary" onClick={handleclick}>Submit</button>
   
 </form>
-
+</div>
+      </div>
     </div>
   )
 }

@@ -8,6 +8,7 @@ import {
   BrowserRouter,
   Routes,Route
 } from "react-router-dom";
+import TransactionSummaryPage from './components/TransactionSummary';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/login" element={<Login/>}></Route>
         <Route exact path="/signup" element={<Signup/>}></Route>
         <Route exact path="/history" element={<Tran/>}></Route>
+        <Route exact path="/transactionsummary" element={<TransactionSummaryPage/>}></Route>
         
       </Routes>
       </BrowserRouter>
